@@ -1,142 +1,54 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Home - My Portfolio</title>
+    <title>My Portfolio</title>
     <link rel="stylesheet" href="css/home.css">
 </head>
+
 <body>
 
-    <header>
-        <a href="index.php" class="logo">
-            <img src="images/logo.jpg" alt="Logo">
-            <span>My Portfolio.</span>
-        </a>
+    <section class="projects">
 
-        <nav>
-            <a href="index.php">Home</a>
-            <a href="#about">About</a>
-            <a href="#projects">Projects</a>
-            <a href="#contact">Contact</a>
-        </nav>
-    </header>
+        <h2>My Projects</h2>
 
-    <main>
+        <div class="projects-container">
 
-        <section class="hero">
-            <div class="hero-text">
-                <p class="small-title">WELCOME TO MY PORTFOLIO / 2026</p>
+            <?php foreach ($projets as $projet): ?>
 
-                <h1>Hello, I'm<br>Fatima-Ezzohrae<span>.</span></h1>
+                <article class="project-card">
 
-                <h2>Web Development Student</h2>
+                    <img src="<?= $projet['image'] ?>"
+                         alt="<?= $projet['titre'] ?>">
 
-                <p>
-                    Welcome to my personal portfolio!
-                    Here you can discover my work, my skills
-                    and the projects I have created.
-                </p>
+                    <div class="project-info">
 
-                <a href="#projects" class="button">
-                    Explore My Projects →
-                </a>
-            </div>
-
-            <img src="images/profile.jpg" alt="My photo">
-        </section>
-
-
-        <section class="about" id="about">
-            <p class="small-title">01 / GET TO KNOW ME</p>
-
-            <h2>A little bit<br>about myself.</h2>
-
-            <p>
-                I am a student learning web development.
-                I enjoy creating websites, discovering new technologies
-                and improving my skills in HTML and CSS.
-            </p>
-        </section>
-
-
-        <section class="skills">
-            <p class="small-title">02 / WHAT I LEARN</p>
-
-            <h2>My Skills</h2>
-              <?php foreach ($skills as $sky):?>
-
-            <p><?=$sky?></p>
-            <?php endforeach;?>
-        </section>
-
-
-        <section class="projects" id="projects">
-
-            <p class="small-title">03 / A SELECTION OF MY WORK</p>
-
-            <h2>Things I've<br>created.</h2>
-
-            <p>Here are some of the projects I have worked on.</p>
-
-            <div class="project-container">
-
-                <?php foreach ($projets as $projet): ?>
-
-                    <article class="project-card">
-
-                        <img
-                            src="<?= $projet['image'] ?>"
-                            alt="<?= $projet['titre'] ?>"
-                        >
-
-                        <p class="small-title">
+                        <p class="project-category">
                             <?= $projet['categorie'] ?>
                         </p>
 
-                        <h3>
-                            <?= $projet['titre'] ?>
-                        </h3>
+                        <h3><?= $projet['titre'] ?></h3>
 
-                        <p>
-                            <?= $projet['description'] ?>
-                        </p>
+                        <p><?= $projet['description'] ?></p>
 
-                        <a href="<?= $projet['lien'] ?>">
-                            View Project →
+                        <?php if ($projet['featured']): ?>
+                            <p>Featured Project</p>
+                        <?php endif; ?>
+
+                        <a href="<?= $projet['lien'] ?>"
+                           class="project-button">
+                            View Project
                         </a>
 
-                    </article>
+                    </div>
 
-                <?php endforeach; ?>
+                </article>
 
-            </div>
+            <?php endforeach; ?>
 
-        </section>
+        </div>
 
-
-        <section class="contact" id="contact">
-            <p class="small-title">04 / SAY HELLO</p>
-
-            <h2>Let's Get<br>In Touch.</h2>
-
-            <p>
-                Thank you for visiting my portfolio.
-                Feel free to contact me for more information.
-            </p>
-
-            <a href="mailto:your-email@example.com" class="button">
-                Contact Me →
-            </a>
-        </section>
-
-    </main>
-
-
-    <footer>
-        <p>© 2026 My Portfolio. All rights reserved.</p>
-    </footer>
+    </section>
 
 </body>
 </html>
